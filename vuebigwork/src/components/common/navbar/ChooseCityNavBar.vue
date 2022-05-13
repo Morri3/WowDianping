@@ -8,7 +8,7 @@
 
     <!--右边部分-->
     <div class="navbar-right">
-      <van-search v-model="value" shape="round"
+      <van-search v-model="value" shape="round" @click="gotoSearch(cities)"
         input-align="center" placeholder="输入城市名或拼音查询" class="search">
         <!--自定义搜索框左边的图标-->
         <template #left-icon>
@@ -23,6 +23,14 @@
 import { reactive, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 export default {
+  props: {
+    cities: {
+      type: Object,
+      default () {
+        return {}
+      }
+    }
+  },
   data () {
     return {
 
@@ -40,9 +48,21 @@ export default {
       router.go(-1)
     }
 
+    // 跳转到搜索页
+    const gotoSearch = (cities) => {
+      console.log(cities)
+      router.push({ // 跳转到搜索城市界面
+        path: '/city/search',
+        query: {
+          cities: JSON.stringify(cities) // 把城市传给SearchCity
+        }
+      })
+    }
+
     return {
       ...toRefs(state),
-      goBack
+      goBack,
+      gotoSearch
     }
   }
 }

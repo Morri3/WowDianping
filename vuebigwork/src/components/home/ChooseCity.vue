@@ -1,6 +1,6 @@
 <template>
   <!--顶部导航栏-->
-  <ChooseCityNavBar/>
+  <ChooseCityNavBar :cities="cities"/>
 
   <!--tab栏-->
   <div class="van-tab">

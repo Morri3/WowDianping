@@ -52,6 +52,14 @@ const routes = [
     meta: {
       title: '选择城市'
     }
+  },
+  {
+    path: '/city/search',
+    name: 'searchcity',
+    component: () => import('../components/home/SearchCity.vue'),
+    meta: {
+      title: '搜索城市'
+    }
   }
 ]
 
