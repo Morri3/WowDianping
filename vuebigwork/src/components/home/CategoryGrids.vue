@@ -5,7 +5,7 @@
       <!--种类的宫格第一页-->
       <van-grid :column-num="5" :gutter="0" :border="false" class="grid">
         <van-grid-item v-for="(item, index) in category" :key="index"
-          class="category-item" @click="gotoCategory(item.name)">
+          class="category-item" @click="gotoCategory(item.name)" :to="'/home/foods'">
           <van-image width="30" height="30" :src="item.pic"/>
           <div class="category-text">{{item.name}}</div>
         </van-grid-item>

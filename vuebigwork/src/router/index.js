@@ -60,6 +60,14 @@ const routes = [
     meta: {
       title: '搜索城市'
     }
+  },
+  {
+    path: '/home/foods',
+    name: 'foods',
+    component: () => import('../components/home/foods/FoodsVIew.vue'),
+    meta: {
+      title: '美食'
+    }
   }
 ]
 

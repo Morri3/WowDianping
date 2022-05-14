@@ -11,6 +11,86 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use("/getShops", function (req, res) {
+  res.json(
+    Mock.mock({
+      code: 0,
+      data: [
+        [
+          {
+            "title": "荣小馆(杭州大厦店)",
+            "pic": "http://p1.meituan.net/biztone/6455927_1635663461430.jpeg%40340w_255h_1e_1c_1l%7Cwatermark%3D0",
+            "shop_url": "",
+            "shop": "",
+            "comment": 4686,
+            "price": 197,
+            "keyword": "浙菜",
+            "keyword2": "武林广场",
+            "recommend": "目鱼香肠",
+            "recommend2": "沙蒜烧豆面",
+            "recommend3": "东海三鲜",
+            "msg": "",
+            "rate": 4.60,
+            "distance": "6.4km",
+            "year": 4
+          },
+          {
+            "title": "金猪",
+            "pic": "https://img.meituan.net/msmerchant/334f71cddaf148ad062e4c39a71329da69260.jpg%40340w_255h_1e_1c_1l%7Cwatermark%3D0",
+            "shop_url": "",
+            "shop": "",
+            "comment": 4592,
+            "price": 57,
+            "keyword": "浙菜",
+            "keyword2": "凤起路沿线",
+            "recommend": "糖醋里脊",
+            "recommend2": "开背虾",
+            "recommend3": "臭豆腐",
+            "msg": "",
+            "rate": 4.60,
+            "distance": "7.6km",
+            "year": 3
+          },
+          {
+            "title": "101茶餐厅",
+            "pic": "http://qcloud.dpfile.com/pc/jiclIsCKmOI2arxKN1Uf0Hx3PucIJH8q0QSz-Z8llzcN56-_QiKuOvyio1OOxsRtbKcq9vnEaGy3xLEf-_v_oA.jpg",
+            "shop_url": "",
+            "shop": "",
+            "comment": 3265,
+            "price": 83,
+            "keyword": "台湾菜",
+            "keyword2": "大关",
+            "recommend": "五花卤肉饭",
+            "recommend2": "湾湾香肠",
+            "recommend3": "好大鳗鱼饭",
+            "msg": "",
+            "rate": 4.80,
+            "distance": "2.7km",
+            "year": 3
+          },
+          {
+            "title": "粤顺餐馆(朝晖国都店)",
+            "pic": "http://p0.meituan.net/merchant/f9857226f272c4167a9d012f05e9145e114266.jpg%40340w_255h_1e_1c_1l%7Cwatermark%3D0",
+            "shop_url": "http://www.dianping.com/brands/bH6DRbiqGveu6xjwG",
+            "shop": "分店",
+            "comment": 10217,
+            "price": 181,
+            "keyword": "顺德菜",
+            "keyword2": "西湖文化广场",
+            "recommend": "粥底火锅",
+            "recommend2": "虾滑",
+            "recommend3": "白贝",
+            "msg": "",
+            "rate": 4.60,
+            "distance": "6.0km",
+            "year": 11
+          }
+        ]        
+      ]
+    })
+  );
+});
+
 app.use("/getCities", function (req, res) {
   res.json(
     Mock.mock({
