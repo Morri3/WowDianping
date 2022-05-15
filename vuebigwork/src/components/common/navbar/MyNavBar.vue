@@ -1,18 +1,12 @@
 <template>
-  <!--顶部导航栏-->
-  <MyNavBar/>
+  <div>
 
-  <!---->
-
+  </div>
 </template>
 
 <script>
 import { reactive, toRefs } from 'vue'
-import MyNavBar from '@/components/common/navbar/MyNavBar.vue'
 export default {
-  components: {
-    MyNavBar
-  },
   setup () {
     const state = reactive({
 

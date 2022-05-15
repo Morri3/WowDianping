@@ -53,8 +53,8 @@
           </div>
 
           <div v-else>
-            <div class="zzz">
-              这是港澳台选择
+            <div class="other">
+              这是国际/港澳台的城市选择
             </div>
           </div>
         </van-tab>
@@ -207,4 +207,7 @@ export default {
   justify-content: left;
 }
 
+.other{
+  width: 375px;
+}
 </style>

@@ -31,6 +31,9 @@ app.use("/getShops", function (req, res) {
             "recommend3": "东海三鲜",
             "msg": "",
             "rate": 4.60,
+            "taste": 4.60,
+            "env": 4.60,
+            "serve": 4.60,
             "distance": "6.4km",
             "year": 4
           },
@@ -48,6 +51,9 @@ app.use("/getShops", function (req, res) {
             "recommend3": "臭豆腐",
             "msg": "",
             "rate": 4.60,
+            "taste": 4.70,
+            "env": 4.10,
+            "serve": 4.40,
             "distance": "7.6km",
             "year": 3
           },
@@ -65,6 +71,9 @@ app.use("/getShops", function (req, res) {
             "recommend3": "好大鳗鱼饭",
             "msg": "",
             "rate": 4.80,
+            "taste": 4.80,
+            "env": 4.50,
+            "serve": 4.90,
             "distance": "2.7km",
             "year": 3
           },
@@ -82,6 +91,9 @@ app.use("/getShops", function (req, res) {
             "recommend3": "白贝",
             "msg": "",
             "rate": 4.60,
+            "taste": 4.70,
+            "env": 4.40,
+            "serve": 4.50,
             "distance": "6.0km",
             "year": 11
           }

@@ -5,7 +5,7 @@
       <!--种类的宫格第一页-->
       <van-grid :column-num="5" :gutter="0" :border="false" class="grid">
         <van-grid-item v-for="(item, index) in category" :key="index"
-          class="category-item" @click="gotoCategory(item.name)" :to="'/home/foods'">
+          class="category-item" @click="gotoCategory(item.name)">
           <van-image width="30" height="30" :src="item.pic"/>
           <div class="category-text">{{item.name}}</div>
         </van-grid-item>
@@ -28,6 +28,7 @@
 <script>
 import { onBeforeMount, reactive, toRefs } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+// import axios from 'axios'
 export default {
   data () {
     return {
@@ -36,7 +37,7 @@ export default {
   },
   setup () {
     const state = reactive({
-      city: '杭州',
+      city: '',
       category: [
         {
           pic: require('../../assets/images/home/icon1.jpg'),
@@ -123,9 +124,9 @@ export default {
       ]
     })
 
-    // 设置城市
     const route = useRoute() // 使用路由
     onBeforeMount(() => {
+      // 设置城市
       state.city = route.query.city
     })
 
@@ -140,10 +141,20 @@ export default {
       })
     }
 
+    // 点击宫格图标跳转到相应界面
+    const gotoCategory = (name) => {
+      if (name === '美食' && state.city === '杭州') { // 跳转到美食界面
+        router.push({
+          path: '/home/foods'
+        })
+      }
+    }
+
     return {
       ...toRefs(state),
       chooseCity,
-      route
+      route,
+      gotoCategory
     }
   }
 }

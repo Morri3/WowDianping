@@ -48,7 +48,7 @@ const routes = [
   {
     path: '/city',
     name: 'city',
-    component: () => import('../components/home/ChooseCity.vue'),
+    component: () => import('../components/home/city/ChooseCity.vue'),
     meta: {
       title: '选择城市'
     }
@@ -56,7 +56,7 @@ const routes = [
   {
     path: '/city/search',
     name: 'searchcity',
-    component: () => import('../components/home/SearchCity.vue'),
+    component: () => import('../components/home/city/SearchCity.vue'),
     meta: {
       title: '搜索城市'
     }

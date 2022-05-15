@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { reactive, toRefs, onMounted, ref, computed } from 'vue'
+import { reactive, toRefs, onMounted, ref, computed, onBeforeMount } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 export default {
   data () {
@@ -78,6 +78,12 @@ export default {
       }
     })
 
+    onBeforeMount(() => {
+      // 从缓存去搜索历史
+      state.history =
+        localStorage.searchCityHistory ? JSON.parse(localStorage.searchCityHistory) : []
+    })
+
     onMounted(() => {
       state.cities = JSON.parse(route.query.cities)
     })
@@ -107,12 +113,24 @@ export default {
 
     // 清除搜索记录
     const clearHistory = () => {
-      state.history = []
+      localStorage.searchCityHistory = [] // 清除缓存中的
+      state.history = [] // 清除当前文件中的
+    }
+
+    // 搜索历史记录去重
+    const unique = (arr) => {
+      return arr.filter((item, index, arr) => {
+        return arr.indexOf(item, 0) === index
+      })
     }
 
     // 选择城市
     const chooseCity = (item) => {
-      state.history.push(item) // 添加搜索记录
+      var tmp = []
+      tmp.push(item) // 把城市添加到临时数组
+      tmp = unique(tmp) // 临时数组去重
+      state.history = tmp // 设置history
+      localStorage.setItem('searchCityHistory', JSON.stringify(state.history)) // 设置localStorage
 
       // 跳转回首页
       router.push({ // 跳转到选择城市界面
@@ -132,7 +150,8 @@ export default {
       chooseCity,
       value,
       clearHistory,
-      showClear
+      showClear,
+      unique
     }
   }
 }
