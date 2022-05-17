@@ -1,6 +1,7 @@
 <template>
   <div class="follow">
-    123
+    <img alt="Vue logo" src="@/assets/images/logo.png">
+    <div class="title">关注界面即将到来，尽请期待</div>
   </div>
 </template>
 
@@ -19,5 +20,16 @@ export default {
 </script>
 
 <style scoped>
-
+.follow{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 250px;
+  flex-direction: column;
+}
+.title{
+  margin-top: 20px;
+  font-size: 18px;
+  font-style: italic;
+}
 </style>

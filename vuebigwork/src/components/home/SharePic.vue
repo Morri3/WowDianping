@@ -82,7 +82,7 @@ export default {
 <style lang="scss" scoped>
 .van-tabs{
   margin-top: 15px;
-  margin-bottom: 49px; // 让内容不被底部导航栏遮盖
+  margin-bottom: 59px; // 让内容不被底部导航栏遮盖
 }
 
 .share-item{
@@ -92,6 +92,8 @@ export default {
   width: 180px;
   height: auto;
   margin-top: 13px;
+
+  // box-shadow:0 0.2px 0.1px 0.1px #ababab;/*阴影*/
 }
 .content{
   width: 160px;

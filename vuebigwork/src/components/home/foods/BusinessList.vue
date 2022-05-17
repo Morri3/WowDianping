@@ -134,7 +134,7 @@ export default {
     }
 
     // 智能排序
-    var sort1by3 = (a, b) => {
+    const sort1by3 = (a, b) => {
       if (a.rate === b.rate) {
         if (a.price === b.price) {
           if (a.distance < b.distance) {
@@ -159,7 +159,7 @@ export default {
     }
 
     // 距离优先
-    var sort2by3 = (a, b) => {
+    const sort2by3 = (a, b) => {
       if (a.distance < b.distance) {
         return -1
       } else if (a.distance === b.distance) {
@@ -170,7 +170,7 @@ export default {
     }
 
     // 人气优先
-    var sort3by3 = (a, b) => {
+    const sort3by3 = (a, b) => {
       if (a.comment < b.comment) {
         return 1
       } else if (a.comment === b.comment) {
@@ -181,7 +181,7 @@ export default {
     }
 
     // 好评优先
-    var sort4by3 = (a, b) => {
+    const sort4by3 = (a, b) => {
       if (a.rate < b.rate) {
         return 1
       } else if (a.rate === b.rate) {
@@ -192,7 +192,7 @@ export default {
     }
 
     // 口味优先
-    var sort5by3 = (a, b) => {
+    const sort5by3 = (a, b) => {
       if (a.taste < b.taste) {
         return 1
       } else if (a.taste === b.taste) {
@@ -203,7 +203,7 @@ export default {
     }
 
     // 环境优先
-    var sort6by3 = (a, b) => {
+    const sort6by3 = (a, b) => {
       if (a.env < b.env) {
         return 1
       } else if (a.env === b.env) {
@@ -214,7 +214,7 @@ export default {
     }
 
     // 服务优先
-    var sort7by3 = (a, b) => {
+    const sort7by3 = (a, b) => {
       if (a.serve < b.serve) {
         return 1
       } else if (a.serve === b.serve) {
@@ -225,7 +225,7 @@ export default {
     }
 
     // 低价优先
-    var sort8by3 = (a, b) => {
+    const sort8by3 = (a, b) => {
       if (a.price < b.price) {
         return -1
       } else if (a.price === b.price) {
@@ -236,7 +236,7 @@ export default {
     }
 
     // 高价优先
-    var sort9by3 = (a, b) => {
+    const sort9by3 = (a, b) => {
       if (a.price < b.price) {
         return 1
       } else if (a.price === b.price) {

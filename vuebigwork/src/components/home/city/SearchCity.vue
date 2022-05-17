@@ -126,7 +126,7 @@ export default {
 
     // 选择城市
     const chooseCity = (item) => {
-      var tmp = []
+      let tmp = []
       tmp.push(item) // 把城市添加到临时数组
       tmp = unique(tmp) // 临时数组去重
       state.history = tmp // 设置history
