@@ -28,7 +28,7 @@
 
     <!--登录 按钮-->
     <van-button round type="primary" color="red" size="normal"
-      class="button" @click="next()">下一步</van-button>
+      class="button" @click="next()">登录</van-button>
 
     <!--提示-->
     <div class="tip">未注册的手机号码验证后自动注册</div>

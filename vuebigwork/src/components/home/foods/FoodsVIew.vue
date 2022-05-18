@@ -1,13 +1,13 @@
 <template>
   <!--顶部导航栏-->
-  <FoodsNavBar/>
+  <foods-nav-bar/>
 
   <!--五个类型宫格-->
-  <FiveCategory/>
+  <five-category/>
   <!--多个正方形广告框-->
-  <AdSquare/>
+  <ad-square/>
   <!--商家列表-->
-  <BusinessList/>
+  <business-list/>
 </template>
 
 <script>

@@ -1,30 +1,80 @@
 <template>
-  <van-tabs v-model:active="active" class="van-tabs">
-    <van-tab v-for="(item, index) in list" :key="index" :title="item">
+  <van-tabs v-model:active="active" line-height="6" line-width="30"
+    color="#ff8a65" animated swipeable @change="change()" class="van-tabs"
+    title-active-color="#424242" title-inactive-color="#9e9e9e">
+    <van-tab v-for="(item, index) in list" :key="index" class="tab">
+      <!--自定义标题-->
+      <template #title>
+        <div class="van-tab-title">{{item}}</div>
+      </template>
+
       <!--推荐-->
       <div v-if="index === 0">
-        <!--宫格，设置两列-->
-        <van-grid :column-num="2" :gutter="8">
-          <!--宫格的元素-->
-          <van-grid-item v-for="(item, index) in shares" :key="index"
-            class="share-item" @click="detail(item)" >
-            <van-image width="165" :src="item.pic" class="pic"/>
-            <!--内容-->
-            <div class="content">{{item.content}}</div>
-            <div class="user">
-              <!--用户头像、昵称-->
-              <div class="userbox">
-                <van-image width="23" height="23" :src="item.userhead" round="true" class="userhead"/>
-                <div class="username">{{item.username}}</div>
-              </div>
-              <!--点赞图标、点赞数-->
-              <div class="likebox">
-                <van-icon name="good-job-o" size="18" color="#333" class="likeicon" @click="like(item)"/>
-                <div class="likes" @click="like(item)">{{item.likes}}</div>
+        <!--这个div让两个van-grid水平两列摆放-->
+        <div class="shareBox">
+
+          <!--第一个grid-->
+          <div class="shareBoxInner">
+            <div v-for="(item, index) in shares" :key="index">
+              <!--偶数index-->
+              <div v-if="index % 2 === 0">
+                <div class="share-item">
+                  <van-image width="165" :src="item.pic" class="pic"/>
+                  <!--内容-->
+                  <div class="content">{{item.content}}</div>
+                  <div class="user">
+                    <!--用户头像、昵称-->
+                    <div class="userbox">
+                      <van-image width="20" height="20" :src="item.userhead" round="true" class="userhead"/>
+                      <div class="username">{{item.username}}</div>
+                    </div>
+                    <!--点赞图标、点赞数-->
+                    <div class="likebox">
+                      <van-icon name="good-job-o" size="18" color="#333" class="likeicon" @click="like(item)"/>
+                      <div class="likes" @click="like(item)">{{item.likes}}</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </van-grid-item>
-        </van-grid>
+          </div>
+
+          <!--第二个grid-->
+          <div class="shareBoxInner">
+            <div v-for="(item, index) in shares" :key="index">
+              <!--奇数index-->
+              <div v-if="index % 2 === 1">
+                <div class="share-item">
+                  <van-image width="165" :src="item.pic" class="pic"/>
+                  <!--内容-->
+                  <div class="content">{{item.content}}</div>
+                  <div class="user">
+                    <!--用户头像、昵称-->
+                    <div class="userbox">
+                      <van-image width="23" height="23" :src="item.userhead" round="true" class="userhead"/>
+                      <div class="username">{{item.username}}</div>
+                    </div>
+                    <!--点赞图标、点赞数-->
+                    <div class="likebox">
+                      <van-icon name="good-job-o" size="18" color="#333" class="likeicon" @click="like(item)"/>
+                      <div class="likes" @click="like(item)">{{item.likes}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div v-else class="else"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!--其他页面-->
+      <div v-else>
+        <div class="blank">
+          <img alt="Vue logo" src="@/assets/images/logo.png">
+          <div class="title">界面即将到来，尽请期待</div>
+        </div>
       </div>
     </van-tab>
   </van-tabs>
@@ -63,17 +113,24 @@ export default {
           userhead: require('../../assets/images/home/userhead3.jpg'),
           username: '一只埋酱',
           likes: 123
+        },
+        {
+          pic: require('../../assets/images/home/pic4.jpg'),
+          content: '可以咕噜咕噜喝上一大碗',
+          userhead: require('../../assets/images/home/userhead4.jpg'),
+          username: '十三分甜',
+          likes: 378
         }
       ]
     })
 
-    const detail = (item) => {
+    const change = () => {
 
     }
 
     return {
       ...toRefs(state),
-      detail
+      change
     }
   }
 }
@@ -81,19 +138,48 @@ export default {
 
 <style lang="scss" scoped>
 .van-tabs{
-  margin-top: 15px;
-  margin-bottom: 59px; // 让内容不被底部导航栏遮盖
+  margin-top: 10px;
+  margin-bottom: 49px; // 让内容不被底部导航栏遮盖
+  padding-top: 0px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.tab{
+  background-color:#f5f5f5;
+}
+.van-tab-title{
+  margin-bottom: -20px;
+  height: 10px;
+  z-index: 15;
+}
+
+.shareBox{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+}
+.shareBoxInner{
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.shareBoxInner:nth-child(2){ // 第二个shareBoxInner的样式
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 5px;
 }
 
 .share-item{
-  border-radius: 10px;
-  vertical-align: top; //顶部对齐
+  border-radius: 0 0 5px 5px;
 
-  width: 180px;
+  width: 175px;
   height: auto;
-  margin-top: 13px;
-
-  // box-shadow:0 0.2px 0.1px 0.1px #ababab;/*阴影*/
+  margin-bottom: 5px; // 同一列相邻两个的间距
+  padding-bottom: 5px;
+  background-color: #fff;
+  box-shadow:0 0.2px 0.1px 0.1px #ababab;/*阴影*/
+}
+.pic{
+  border-radius: 5px;
 }
 .content{
   width: 160px;
@@ -121,6 +207,7 @@ export default {
   display: flex;
   flex-direction: row; /*横向排列*/
   align-items: center; //文字居中
+  justify-content:space-around;
 
   margin-top: 5px;
   margin-left: 10px;
@@ -132,12 +219,13 @@ export default {
   display: flex;
   flex-direction: row; /*横向排列*/
   align-items: center; //文字居中
+  justify-content:center;
 }
 .username{
   font-size: 10px;
   margin-left: 3px;
 
-  width: 40px;
+  width: 50px;
 
   //处理换行
   overflow: hidden;//解决溢出问题
@@ -153,21 +241,37 @@ export default {
 }
 .likebox{
   width: 50px;
-  position:absolute;
-  right: 10px;
+  position:relative;
+  // right: 0px;
+  margin-right: 0px;
 
   display: flex;
   flex-direction: row; /*横向排列*/
   align-items: center; //文字居中
+  justify-content:center;
 }
 .likeicon{
   position: relative; //相对点赞数的相对定位
-  margin-right: 10px;
+  margin-right: 0px;
 }
 .likes{
   font-size: 10px;
 
-  position: absolute; //对点赞父组件采用向右的绝对定位
-  right: 2px;
+  position: relative; //对点赞父组件采用向右的绝对定位
+  margin-right: 2px;
+}
+
+.blank{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+  flex-direction: column;
+  height:215px
+}
+.title{
+  margin-top: 20px;
+  font-size: 18px;
+  font-style: italic;
 }
 </style>

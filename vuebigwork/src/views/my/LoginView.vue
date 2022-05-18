@@ -1,9 +1,9 @@
 <template>
   <!--顶部导航栏-->
-  <LoginNavBar/>
+  <login-nav-bar/>
 
   <!--正文-->
-  <LoginPage class="loginpage"/>
+  <login-page class="loginpage"/>
 </template>
 
 <script>

@@ -1,12 +1,12 @@
 <template>
   <!--轮播图-->
-  <van-swipe class="swiper" :height="220" indicator-color="#f4621a" show-indicators>
+  <van-swipe class="swiper" :height="210" indicator-color="#f4621a" show-indicators>
     <van-swipe-item>
       <!--种类的宫格第一页-->
       <van-grid :column-num="5" :gutter="0" :border="false" class="grid">
         <van-grid-item v-for="(item, index) in category" :key="index"
           class="category-item" @click="gotoCategory(item.name)">
-          <van-image width="30" height="30" :src="item.pic"/>
+          <van-image width="35" height="35" :src="item.pic"/>
           <div class="category-text">{{item.name}}</div>
         </van-grid-item>
       </van-grid>
@@ -17,7 +17,7 @@
       <van-grid :column-num="5" :gutter="0" :border="false" class="grid">
         <van-grid-item v-for="(item, index) in category2" :key="index"
           class="category-item" @click="gotoCategory(item.name)">
-          <van-image width="30" height="30" :src="item.pic"/>
+          <van-image width="35" height="35" :src="item.pic"/>
           <div class="category-text">{{item.name}}</div>
         </van-grid-item>
       </van-grid>
@@ -166,5 +166,9 @@ export default {
 }
 .category-text{
   font-size: 12px;
+}
+
+.category-item:nth-child(n+6){
+  margin-top: -15px; //第二排上移
 }
 </style>

@@ -31,8 +31,9 @@
       <van-swipe class="swiper" :loop="false" :width="80" :height="20"
         :show-indicators="false">
         <van-swipe-item class="select-item" v-for="(item,index) in selectTags" :key="index">
-          <van-tag plain type="primary" round class="selectTag"
-            size="medium" text-color="#333">{{item}}</van-tag>
+          <div class="selectTag">{{item}}</div>
+          <!-- <van-tag plain type="primary" round class="selectTag"
+            size="medium" text-color="#333">{{item}}</van-tag> -->
         </van-swipe-item>
       </van-swipe>
     </div>
@@ -42,7 +43,7 @@
 
   <!--商家列表-->
   <van-list v-model:loading="loading" :finished="finished" finished-text="已经到底啦"
-    loading-text="正在加载中..." @load="onLoad">
+    loading-text="正在加载中..." @load="onLoad" class="list">
     <van-cell v-for="(item, index) in list[0]" :key="index" @click="detail(item)">
       <van-card :thumb="item.pic">
 
@@ -368,10 +369,20 @@ export default {
   font-size:14px;
   font-weight: 400;
   margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+
   background-color: #fff;
+  border: none;
 }
 .selectTag{
-  background-color: rgb(216, 216, 216);
+  background-color: #eeeeee;
+  border: none;
+  border-radius: 35px;
+  margin-right: 5px;
+
+  width: auto;
+  height: 20px;
 }
 
 .title{
@@ -423,5 +434,9 @@ export default {
 .zone, .subway{
   font-size: 18px;
   font-weight: 600;
+}
+
+.list{
+  margin-top: -15px;
 }
 </style>

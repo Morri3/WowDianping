@@ -1,13 +1,13 @@
 <template>
   <!--顶部导航栏-->
-  <HomeNavBar/>
+  <home-nav-bar/>
 
   <!--种类宫格-->
-  <CategoryGrids />
+  <category-grids />
   <!--四个广告方框-->
   <Advertisement />
   <!--底部图片方框-->
-  <SharePic/>
+  <share-pic/>
 </template>
 
 <script>

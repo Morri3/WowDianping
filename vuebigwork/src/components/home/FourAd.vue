@@ -54,6 +54,7 @@ export default {
   display: flex;
   flex-direction: row; /*横向排列*/
   align-items: center;
+  height: 55px;
 }
 .board{
   background-color: rgb(250, 244, 244);
@@ -61,13 +62,14 @@ export default {
   height: 50px;
   margin: 0 10px 0 10px;
   border-radius: 10px;
-  box-shadow:0 0.8px 2px 0.5px #ababab;/*阴影*/
+  box-shadow:0 3px 3px 1.5px #bdbdbd;/*阴影*/
 }
 .title{
   font-size: 14px;
   margin-right: 5px;
-  color: white;
-  text-shadow: 0.5px 0.5px 0.8px black, 0 0 25px #f4621a, 0 0 1px #f4621a;
+  font-weight: 550;
+  color: rgb(101, 100, 100);
+  text-shadow: 0.5px 0.5px 0.8px rgb(35, 35, 35), 0 0 15px #f7d032, 0 0 1px #f4621a;
 }
 .title2{
   font-size: 10px;

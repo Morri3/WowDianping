@@ -5,7 +5,7 @@
     <!--自定义左边部分-->
     <template #left>
       <div class="city">{{city}}</div>
-      <van-icon name="arrow-down" size="18" color="#333"/>
+      <van-icon name="arrow-down" size="12" color="#424242" class="down"/>
     </template>
 
     <!--自定义中间部分-->
@@ -88,8 +88,16 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.down{
+  margin-left: 5px;
+}
 .search{
-  height:49px;
+  margin: 5px;
+  margin-left: 10px;
+  height: 25px;
+  padding: 0px;
+  border-radius: 40px;
+  box-shadow:0 2px 5px 1px #cccccc;/*阴影*/
 }
 
 </style>

@@ -25,7 +25,7 @@
     <ul class="historyList">
       <li v-for="(item,index) in history" :key="index" class="historyItem">
         <van-divider/><!--分隔线-->
-        <div>{{item}}</div>
+        <div @click="chooseCity(item)">{{item}}</div>
       </li>
     </ul>
     <van-divider v-show="showClear"/><!--分隔线-->
@@ -126,7 +126,7 @@ export default {
 
     // 选择城市
     const chooseCity = (item) => {
-      let tmp = []
+      let tmp = localStorage.searchCityHistory ? JSON.parse(localStorage.searchCityHistory) : [] // 获取localStorage
       tmp.push(item) // 把城市添加到临时数组
       tmp = unique(tmp) // 临时数组去重
       state.history = tmp // 设置history
@@ -171,6 +171,7 @@ export default {
 
   display: flex;
   flex-direction: row; /*横向排列*/
+  align-items: center;
 }
 .navbar-left{
   padding-left: 5px;
@@ -181,8 +182,14 @@ export default {
   background-color: #fff;
 }
 .search{
-  width: 350px; // 改变搜索框长度
+  width: 320px; // 改变搜索框长度
   z-index: 9999;
+  margin: 5px;
+  margin-left: 10px;
+  height: 25px;
+  padding: 0px;
+  border-radius: 40px;
+  box-shadow:0 2px 5px 1px #cccccc;/*阴影*/
 }
 
 .historyBox{

@@ -3,7 +3,7 @@
   <div class="navbar">
     <!--左边部分-->
     <div class="navbar-left">
-      <van-icon name="cross" size="26" color="#333" @click="goBack()"/>
+      <van-icon name="cross" size="24" color="#333" @click="goBack()"/>
     </div>
 
     <!--右边部分-->
@@ -79,9 +79,11 @@ export default {
   width: 100%;
   height: 49px;
   padding: 0;
+  background-color: #fff;
 
   display: flex;
   flex-direction: row; /*横向排列*/
+  align-items: center;
 }
 .navbar-left{
   padding-left: 15px;
@@ -92,7 +94,14 @@ export default {
   background-color: #fff;
 }
 .search{
-  width: 330px; // 改变搜索框长度
+  width: 310px; // 改变搜索框长度
   z-index: 9999;
+  margin: 5px;
+  margin-left: 10px;
+  height: 25px;
+  padding: 0px;
+  border-radius: 40px;
+  box-shadow:0 2px 5px 1px #cccccc;/*阴影*/
+  // background-color: #e0e0e0;
 }
 </style>

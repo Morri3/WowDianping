@@ -72,7 +72,7 @@ export default {
 
     const route = useRoute() // 使用路由
     onBeforeMount(() => {
-      state.user.phone = '' // test
+      // state.user.phone = '' // test
       state.user.phone = route.query.phone // 登陆后的手机号传给当前页面
     })
 

@@ -1,69 +1,77 @@
 <template>
   <!--顶部导航栏-->
-  <ChooseCityNavBar :cities="cities"/>
+  <choose-city-nav-bar :cities="cities"/>
 
   <!--tab栏-->
   <div class="van-tab">
-    <van-tabs v-model:active="active" title-active-color="#f4621a">
-        <van-tab v-for="(item, index) in tabs" :key="index" :title="item" class="vantab">
-          <div v-if="item === '国内'">
-            <!--灰色分隔区域-->
-            <div class="grey"></div>
+    <van-tabs v-model:active="active" line-height="4" line-width="40"
+      title-active-color="#f4621a" title-inactive-color="#9e9e9e"
+      class="van-tabs" v-if="show">
+      <van-tab v-for="(item, index) in tabs" :key="index" :title="item" class="vantab">
+        <!--自定义标题-->
+        <template #title>
+          <div class="van-tab-title">{{item}}</div>
+        </template>
 
-            <!--上部分：GPS定位-->
-            <div class="gps">
-              <van-icon name="location" size="18" color="#f4621a" class="locate"/>
-              <div class="curCity">{{city}}</div>
-              <div class="tip">GPS定位</div>
-            </div>
-            <van-divider /><!--分隔线-->
+        <div v-if="item === '国内'">
+          <!--灰色分隔区域-->
+          <div class="grey"></div>
 
-            <!--上部分：历史访问城市-->
-            <div class="history">
-              <div class="historyCity">历史访问城市</div>
+          <!--上部分：GPS定位-->
+          <div class="gps">
+            <van-icon name="location" size="18" color="#f4621a" class="locate"/>
+            <div class="curCity">{{city}}</div>
+            <div class="tip">GPS定位</div>
+          </div>
+
+          <van-divider /><!--分隔线-->
+
+          <!--上部分：历史访问城市-->
+          <div class="history">
+            <div class="historyCity">历史访问城市</div>
+            <van-grid :column-num="3" :gutter="8" >
+              <van-grid-item v-for="(item, index) in history" :key="index"
+                :text="item" class="history-item" @click="chooseCity(item)" />
+            </van-grid>
+          </div>
+
+          <!--上部分：国内热门城市-->
+          <div class="hot">
+            <div class="hotCity">热门访问城市</div>
               <van-grid :column-num="3" :gutter="8">
-                <van-grid-item v-for="(item, index) in history" :key="index"
-                  :text="item" class="history-item" @click="chooseCity(item)" />
-              </van-grid>
-            </div>
-
-            <!--上部分：国内热门城市-->
-            <div class="hot">
-              <div class="hotCity">热门访问城市</div>
-                <van-grid :column-num="3" :gutter="8">
-                  <van-grid-item v-for="(item, index) in hotCities" :key="index"
-                    :text="item" class="hot-item" @click="chooseCity(item)"/>
-              </van-grid>
-            </div>
-
-            <!--灰色分隔区域-->
-            <div class="grey"></div>
-
-            <!--下部分：城市列表-->
-            <van-index-bar :index-list="indexList" sticky> <!--遍历索引列表-->
-              <van-index-anchor v-for="(item, index) in cities" :key="index"
-                :index="item.initial">
-                <div v-if="item.initial !== '热门'">
-                  <span class="index">{{ item.initial }}</span>
-                  <van-cell v-for="(item2, index2) in item.list" :key="index2"
-                    :title="item2.city" class="city-list" @click="chooseCity(item2.city)" />
-                </div>
-              </van-index-anchor>
-            </van-index-bar>
+                <van-grid-item v-for="(item, index) in hotCities" :key="index"
+                  :text="item" class="hot-item" @click="chooseCity(item)"/>
+            </van-grid>
           </div>
 
-          <div v-else>
-            <div class="other">
-              这是国际/港澳台的城市选择
-            </div>
+          <!--灰色分隔区域-->
+          <div class="grey"></div>
+
+          <!--下部分：城市列表-->
+          <van-index-bar :index-list="indexList" sticky> <!--遍历索引列表-->
+            <van-index-anchor v-for="(item, index) in cities" :key="index"
+              :index="item.initial">
+              <div v-if="item.initial !== '热门'">
+                <span class="index">{{ item.initial }}</span>
+                <van-cell v-for="(item2, index2) in item.list" :key="index2"
+                  :title="item2.city" class="city-list" @click="chooseCity(item2.city)" />
+              </div>
+            </van-index-anchor>
+          </van-index-bar>
+        </div>
+
+        <div v-else>
+          <div class="other">
+            这是国际/港澳台的城市选择
           </div>
-        </van-tab>
-      </van-tabs>
+        </div>
+      </van-tab>
+    </van-tabs>
   </div>
 </template>
 
 <script>
-import { reactive, toRefs, onBeforeMount } from 'vue'
+import { reactive, toRefs, onBeforeMount, onMounted } from 'vue'
 import axios from 'axios'
 import ChooseCityNavBar from '@/components/common/navbar/ChooseCityNavBar.vue'
 import { useRouter, useRoute } from 'vue-router'
@@ -78,6 +86,7 @@ export default {
   },
   setup () {
     const state = reactive({
+      show: false,
       city: '杭州',
       tabs: ['国内', '国际/港澳台'],
       history: ['杭州', '温州', '永嘉县'],
@@ -88,6 +97,13 @@ export default {
 
     // 设置城市
     const route = useRoute() // 使用路由
+
+    // 解决van-tabs下划线显示异常
+    onMounted(() => {
+      setInterval(() => {
+        state.show = true
+      }, 300)
+    })
 
     onBeforeMount(() => {
       // 设置城市
@@ -144,6 +160,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.van-tab-title{
+  height: 17px;
+  z-index: 15;
+}
+
 .van-tab{
   margin-top: 49px;
 }
@@ -161,6 +182,7 @@ export default {
   display: flex;
   flex-direction: row; /*横向排列*/
   justify-content: left;
+  align-items: center;
 
   margin-top: 10px;
 }
@@ -169,7 +191,7 @@ export default {
   margin-top: 5px;
 }
 .curCity{
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
 
   margin-left: 4px;
