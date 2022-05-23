@@ -75,6 +75,7 @@ import { reactive, toRefs, onBeforeMount, onMounted } from 'vue'
 import axios from 'axios'
 import ChooseCityNavBar from '@/components/common/navbar/ChooseCityNavBar.vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useStore } from 'vuex' // 使用this.$store
 export default {
   components: {
     ChooseCityNavBar
@@ -133,8 +134,12 @@ export default {
 
     // 选择城市
     const router = useRouter() // 使用路由
+    const store = useStore() // 使用this.$store
     const chooseCity = (item) => {
       state.city = item
+
+      // 把城市set到store中
+      store.commit('setCity', state.city) // 使用this.$store的方法
 
       // 跳转回首页
       router.push({ // 跳转到选择城市界面

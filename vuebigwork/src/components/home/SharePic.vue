@@ -10,63 +10,139 @@
 
       <!--推荐-->
       <div v-if="index === 0">
-        <!--这个div让两个van-grid水平两列摆放-->
-        <div class="shareBox">
 
-          <!--第一个grid-->
-          <div class="shareBoxInner">
-            <div v-for="(item, index) in shares" :key="index">
-              <!--偶数index-->
-              <div v-if="index % 2 === 0">
-                <div class="share-item">
-                  <van-image width="165" :src="item.pic" class="pic"/>
-                  <!--内容-->
-                  <div class="content">{{item.content}}</div>
-                  <div class="user">
-                    <!--用户头像、昵称-->
-                    <div class="userbox">
-                      <van-image width="20" height="20" :src="item.userhead" round="true" class="userhead"/>
-                      <div class="username">{{item.username}}</div>
-                    </div>
-                    <!--点赞图标、点赞数-->
-                    <div class="likebox">
-                      <van-icon name="good-job-o" size="18" color="#333" class="likeicon" @click="like(item)"/>
-                      <div class="likes" @click="like(item)">{{item.likes}}</div>
+        <!--杭州-->
+        <div v-if="city === '杭州'">
+          <!--这个div让两个van-grid水平两列摆放-->
+          <div class="shareBox">
+
+            <!--第一个grid-->
+            <div class="shareBoxInner">
+
+              <div v-for="(item, index) in shares" :key="index">
+                <!--偶数index-->
+                <div v-if="index % 2 === 0">
+                  <div class="share-item">
+                    <van-image width="165" :src="item.pic" class="pic"/>
+                    <!--内容-->
+                    <div class="content">{{item.content}}</div>
+                    <div class="user">
+                      <!--用户头像、昵称-->
+                      <div class="userbox">
+                        <van-image width="20" height="20" :src="item.userhead" round="true" class="userhead"/>
+                        <div class="username">{{item.username}}</div>
+                      </div>
+                      <!--点赞图标、点赞数-->
+                      <div class="likebox">
+                        <van-icon name="good-job-o" size="18" color="#333" class="likeicon" @click="like(item)"/>
+                        <div class="likes" @click="like(item)">{{item.likes}}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!--第二个grid-->
-          <div class="shareBoxInner">
-            <div v-for="(item, index) in shares" :key="index">
-              <!--奇数index-->
-              <div v-if="index % 2 === 1">
-                <div class="share-item">
-                  <van-image width="165" :src="item.pic" class="pic"/>
-                  <!--内容-->
-                  <div class="content">{{item.content}}</div>
-                  <div class="user">
-                    <!--用户头像、昵称-->
-                    <div class="userbox">
-                      <van-image width="23" height="23" :src="item.userhead" round="true" class="userhead"/>
-                      <div class="username">{{item.username}}</div>
-                    </div>
-                    <!--点赞图标、点赞数-->
-                    <div class="likebox">
-                      <van-icon name="good-job-o" size="18" color="#333" class="likeicon" @click="like(item)"/>
-                      <div class="likes" @click="like(item)">{{item.likes}}</div>
+            <!--第二个grid-->
+            <div class="shareBoxInner">
+              <div v-for="(item, index) in shares" :key="index">
+                <!--奇数index-->
+                <div v-if="index % 2 === 1">
+                  <div class="share-item">
+                    <van-image width="165" :src="item.pic" class="pic"/>
+                    <!--内容-->
+                    <div class="content">{{item.content}}</div>
+                    <div class="user">
+                      <!--用户头像、昵称-->
+                      <div class="userbox">
+                        <van-image width="23" height="23" :src="item.userhead" round="true" class="userhead"/>
+                        <div class="username">{{item.username}}</div>
+                      </div>
+                      <!--点赞图标、点赞数-->
+                      <div class="likebox">
+                        <van-icon name="good-job-o" size="18" color="#333" class="likeicon" @click="like(item)"/>
+                        <div class="likes" @click="like(item)">{{item.likes}}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
+                <div v-else class="else"></div>
               </div>
-              <div v-else class="else"></div>
             </div>
-          </div>
 
+          </div>
         </div>
+
+        <!--温州-->
+        <div v-else-if="city === '温州'">
+          <!--这个div让两个van-grid水平两列摆放-->
+          <div class="shareBox">
+
+            <!--第一个grid-->
+            <div class="shareBoxInner">
+
+              <div v-for="(item, index) in shares2" :key="index">
+                <!--偶数index-->
+                <div v-if="index % 2 === 0">
+                  <div class="share-item">
+                    <van-image width="165" :src="item.pic" class="pic"/>
+                    <!--内容-->
+                    <div class="content">{{item.content}}</div>
+                    <div class="user">
+                      <!--用户头像、昵称-->
+                      <div class="userbox">
+                        <van-image width="20" height="20" :src="item.userhead" round="true" class="userhead"/>
+                        <div class="username">{{item.username}}</div>
+                      </div>
+                      <!--点赞图标、点赞数-->
+                      <div class="likebox">
+                        <van-icon name="good-job-o" size="18" color="#333" class="likeicon" @click="like(item)"/>
+                        <div class="likes" @click="like(item)">{{item.likes}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--第二个grid-->
+            <div class="shareBoxInner">
+              <div v-for="(item, index) in shares2" :key="index">
+                <!--奇数index-->
+                <div v-if="index % 2 === 1">
+                  <div class="share-item">
+                    <van-image width="165" :src="item.pic" class="pic"/>
+                    <!--内容-->
+                    <div class="content">{{item.content}}</div>
+                    <div class="user">
+                      <!--用户头像、昵称-->
+                      <div class="userbox">
+                        <van-image width="23" height="23" :src="item.userhead" round="true" class="userhead"/>
+                        <div class="username">{{item.username}}</div>
+                      </div>
+                      <!--点赞图标、点赞数-->
+                      <div class="likebox">
+                        <van-icon name="good-job-o" size="18" color="#333" class="likeicon" @click="like(item)"/>
+                        <div class="likes" @click="like(item)">{{item.likes}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div v-else class="else"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!--其他页面-->
+        <div v-else>
+          <div class="blank">
+            <img alt="Vue logo" src="@/assets/images/logo.png">
+            <div class="title">界面即将到来，尽请期待</div>
+          </div>
+        </div>
+
       </div>
 
       <!--其他页面-->
@@ -81,7 +157,8 @@
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, onBeforeMount } from 'vue'
+import { useStore } from 'vuex' // 使用this.$store
 export default {
   data () {
     return {
@@ -90,6 +167,7 @@ export default {
   },
   setup () {
     const state = reactive({
+      city: '', // 当前城市
       list: ['推荐', '附近', '美食', '溜娃', '宠物', '运动健身', '教培',
         '结婚', '旅行', '玩乐', '逛街', '家居生活', '直播', '打卡地'],
       shares: [
@@ -121,12 +199,42 @@ export default {
           username: '十三分甜',
           likes: 378
         }
+      ],
+      shares2: [
+        {
+          pic: require('../../assets/images/home/pic5.jpg'),
+          content: '如果一个人不知道吃什么，可以试试他家',
+          userhead: require('../../assets/images/home/userhead5.jpg'),
+          username: '四四四小四',
+          likes: 6
+        },
+        {
+          pic: require('../../assets/images/home/pic6.jpg'),
+          content: '考试党+自由职业 | 效率提升的好去处',
+          userhead: require('../../assets/images/home/userhead6.jpg'),
+          username: '酒瘾啊扎',
+          likes: 2
+        },
+        {
+          pic: require('../../assets/images/home/pic7.jpg'),
+          content: '时代巷子里的店，开了又开，层出不穷',
+          userhead: require('../../assets/images/home/userhead7.jpg'),
+          username: '皮卡丘丘',
+          likes: 7
+        }
       ]
     })
 
     const change = () => {
 
     }
+
+    const store = useStore() // 使用this.$store
+    onBeforeMount(() => {
+      state.city = store.state.city
+      console.log(store.state.city)
+      console.log(state.city)
+    })
 
     return {
       ...toRefs(state),

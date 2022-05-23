@@ -47,6 +47,7 @@
 <script>
 import { reactive, toRefs, onMounted, ref, computed, onBeforeMount } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useStore } from 'vuex' // 使用this.$store
 export default {
   data () {
     return {
@@ -63,6 +64,7 @@ export default {
 
     const router = useRouter() // 使用路由
     const route = useRoute() // 使用路由
+    const store = useStore() // 使用this.$store
 
     // 返回上一页
     const goBack = () => {
@@ -131,6 +133,9 @@ export default {
       tmp = unique(tmp) // 临时数组去重
       state.history = tmp // 设置history
       localStorage.setItem('searchCityHistory', JSON.stringify(state.history)) // 设置localStorage
+
+      // 把城市set到store中
+      store.commit('setCity', item) // 使用this.$store的方法
 
       // 跳转回首页
       router.push({ // 跳转到选择城市界面
